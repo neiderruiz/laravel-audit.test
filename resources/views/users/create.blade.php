@@ -6,7 +6,7 @@
 
     <div class="flex">
 
-        <form class="max-w-sm w-1/3 mx-auto space-y-2" action="{{ route('stock.store') }}" method="POST"
+        <form class="max-w-sm w-2/3 mx-auto space-y-2" action="{{ route('users.store') }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             <div class="mb-5">
@@ -15,7 +15,7 @@
                 </label>
                 <input value="{{ old('name') ?? '' }}" type="text" id="name" name="name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Pencil" required />
+                    placeholder="Your name" required />
 
                 @error('name')
                     <small class="text-red-500">
@@ -25,14 +25,29 @@
             </div>
 
             <div class="mb-5">
-                <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Amount
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Email
                 </label>
-                <input value="{{ old('amount') ?? '' }}" type="number" id="amount" name="amount"
+                <input value="{{ old('email') ?? '' }}" type="email" id="name" name="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="10" required />
+                    placeholder="example@gmail.com" required />
 
-                @error('name')
+                @error('email')
+                    <small class="text-red-500">
+                        {{ $message }}
+                    </small>
+                @enderror
+            </div>
+
+            <div class="mb-5">
+                <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Age
+                </label>
+                <input value="{{ old('age') ?? '' }}" type="number" id="amount" name="age"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="18" required />
+
+                @error('age')
                     <small class="text-red-500">
                         {{ $message }}
                     </small>
@@ -42,9 +57,9 @@
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Description
                 </label>
-                <textarea value="{{ old('description') ?? '' }}" name="description" placeholder="add description"
+                <textarea name="description" placeholder="Add description"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required></textarea>
+                    required>{{ old('description') ?? '' }}</textarea>
                 @error('description')
                     <small class="text-red-500">
                         {{ $message }}
@@ -54,14 +69,30 @@
 
             <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">
-                    Upload Image
+                    Upload Avatar
                 </label>
                 <input
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    aria-describedby="file_input_help" name="image" id="file_input" type="file">
+                    aria-describedby="file_input_help" name="avatar" id="file_input" type="file"
+                    >
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX.
                     800x400px).</p>
-                @error('image')
+                @error('avatar')
+                    <small class="text-red-500">
+                        {{ $message }}
+                    </small>
+                @enderror
+            </div>
+
+            <div class="mb-5">
+                <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Password
+                </label>
+                <input value="{{ old('password') ?? '' }}" type="password" id="amount" name="password"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="******" required />
+
+                @error('password')
                     <small class="text-red-500">
                         {{ $message }}
                     </small>

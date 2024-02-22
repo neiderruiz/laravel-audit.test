@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Stock;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,10 +22,19 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'amount'=>'required',
-            'name'=>'required',
-            'description'=>'required',
-            'image'=>'required',
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'age' => 'required|integer|min:18',
+            'description' => 'required|min:5|max:255',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'password' => 'required|min:5',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'avatar.required' => 'El avatar es requerido.'
         ];
     }
 }
