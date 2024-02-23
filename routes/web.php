@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,10 @@ Route::get('/', function () {
     return redirect()->route('users.index');
 });
 
-Route::resource('users',UserController::class);
+Route::resource('users', UserController::class);
+
+Route::get('lang/{locale}', function (String $locale) {
+    App::setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('lang.change');

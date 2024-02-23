@@ -25,6 +25,28 @@
       class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
       Suscribete!
      </button>
+     <div class="flex">
+        <a
+        href="{{route('lang.change',["es"])}}"
+        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+        Español
+       </a>
+       <a
+       href="{{route('lang.change',["en"])}}"
+       class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+       Ingles
+      </a>
+     </div>
+     <div class="flex">
+        <select onchange="window.location.href = this.value;"
+        class="">
+        <option value="{{ route('lang.change', ['es']) }}" {{ app()->getLocale() == 'es' ? 'selected' : '' }}>Español</option>
+        <option value="{{ route('lang.change', ['en']) }}" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>Inglés</option>
+    </select>
+    <div>{{ trans('messages.hello_world') }}</div>
+
+    </div>
+
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li>
