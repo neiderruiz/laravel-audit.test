@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,14 @@ Route::get('lang/{locale}', function (String $locale) {
     session()->put('locale', $locale);
     return redirect()->back();
 })->name('lang.change');
+
+
+Route::resource('articles', ArticleController::class);
+Route::get('/articles/{article}/audit', [ArticleController::class, 'audit'])->name('articles.audit');
+
+
+Route::middleware([])->group(function(){
+    Route::get('dashboard',function(){
+        return view('layout.dashboard');
+    });
+});

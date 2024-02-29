@@ -24,9 +24,6 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|unique:users,email',
-            'age' => 'required|integer|min:18',
-            'description' => 'required|min:5|max:255',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'password' => 'required|min:5',
         ];
     }
@@ -34,7 +31,7 @@ class StoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'avatar.required' => 'El avatar es requerido.'
+            // 'avatar.required' => 'El avatar es requerido.'
         ];
     }
 }

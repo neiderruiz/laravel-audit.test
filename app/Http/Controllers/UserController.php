@@ -33,9 +33,7 @@ class UserController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $name = $request->file('avatar')->store('avatars', ['disk' => 'public']);
         $data = $request->validated();
-        $data['avatar'] = $name;
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
 
